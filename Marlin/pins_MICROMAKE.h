@@ -64,7 +64,7 @@
 #define LED_PIN            -1
 
 // Use the RAMPS 1.4 Analog input 5 on the AUX2 connector
-#define FILWIDTH_PIN        5 // ANALOG NUMBERING
+#define FILWIDTH_PIN        -1 // ANALOG NUMBERING
 
 #if ENABLED(Z_MIN_PROBE_ENDSTOP)
   // Define a pin to use as the signal pin on Arduino for the Z_PROBE endstop.

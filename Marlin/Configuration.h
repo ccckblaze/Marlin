@@ -110,7 +110,7 @@
 
 // Optional custom name for your RepStrap or other custom machine
 // Displayed in the LCD "Ready" message
-#define CUSTOM_MACHINE_NAME "Steve's Kossel"
+#define CUSTOM_MACHINE_NAME "Steve's Deltabot"
 
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
 // You can use an online service to generate a random UUID. (eg http://www.uuidgenerator.net/version4)
@@ -221,8 +221,8 @@
 #define BED_MAXTEMP 120
 
 // If you want the M105 heater power reported in watts, define the BED_WATTS, and (shared for all extruders) EXTRUDER_WATTS
-//#define EXTRUDER_WATTS (12.0*12.0/6.7) // P=U^2/R
-//#define BED_WATTS (12.0*12.0/1.1)      // P=U^2/R
+#define EXTRUDER_WATTS (12.0*12.0/6.7) // P=U^2/R
+#define BED_WATTS (12.0*12.0/1.1)      // P=U^2/R
 
 //===========================================================================
 //============================= PID Settings ================================
@@ -567,7 +567,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
   #define MESH_NUM_Y_POINTS 3
   #define MESH_HOME_SEARCH_Z 4  // Z after Home, bed somewhere below but above 0.0.
 
-  //#define MANUAL_BED_LEVELING  // Add display menu option for bed leveling.
+  #define MANUAL_BED_LEVELING  // Add display menu option for bed leveling.
 
   #if ENABLED(MANUAL_BED_LEVELING)
     #define MBL_Z_STEP 0.025  // Step size while manually probing Z axis.
@@ -817,11 +817,11 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
 // delta speeds must be the same on xyz
 
 // calcing
-#define XYZ_FULL_STEPS_PER_ROTATION 200 //步进电机每周的步数，即360/步进电机上的角度
-//如1.8度，步数应该是360/1.8=200；如果是0.9度电机的话就是 360/0.9=400。27号以前购买的用户请修改为400，27号以后的用户请修改为200。
-#define XYZ_MICROSTEPS 16 //步进驱动的细分数
-#define XYZ_BELT_PITCH 2 //同步带齿间距
-#define XYZ_PULLEY_TEETH 16 //同步轮齿数
+#define XYZ_DEGREE_PER_STEPS 1.8
+#define XYZ_FULL_STEPS_PER_ROTATION (360 / XYZ_DEGREE_PER_STEPS)
+#define XYZ_MICROSTEPS 16
+#define XYZ_BELT_PITCH 2
+#define XYZ_PULLEY_TEETH 16
 #define XYZ_STEPS (XYZ_FULL_STEPS_PER_ROTATION * XYZ_MICROSTEPS / double(XYZ_BELT_PITCH) / double(XYZ_PULLEY_TEETH))
 
 #define DEFAULT_AXIS_STEPS_PER_UNIT   {XYZ_STEPS, XYZ_STEPS, XYZ_STEPS, 150}  // default steps per unit for Kossel (GT2, 20 tooth)
@@ -953,7 +953,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
 // SD Card support is disabled by default. If your controller has an SD slot,
 // you must uncomment the following option or it won't work.
 //
-//#define SDSUPPORT
+#define SDSUPPORT
 
 //
 // SD CARD: SPI SPEED
@@ -998,7 +998,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
 // If you have a speaker that can produce tones, enable it here.
 // By default Marlin assumes you have a buzzer with a fixed frequency.
 //
-//#define SPEAKER
+#define SPEAKER
 
 //
 // The duration and frequency for the UI feedback sound.
