@@ -124,7 +124,7 @@
 #elif MB(RAMBO)
   #include "pins_RAMBO.h"
 #elif MB(MICROMAKE)
-#include "pins_MINIRAMBO.h"
+  #include "pins_MICROMAKE.h"
 #elif MB(MINIRAMBO)
   #include "pins_MINIRAMBO.h"
 #elif MB(ELEFU_3)
