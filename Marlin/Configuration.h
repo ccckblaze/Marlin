@@ -110,7 +110,7 @@
 
 // Optional custom name for your RepStrap or other custom machine
 // Displayed in the LCD "Ready" message
-#define CUSTOM_MACHINE_NAME "Steve's Deltabot"
+#define CUSTOM_MACHINE_NAME "Micromake D1"
 
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
 // You can use an online service to generate a random UUID. (eg http://www.uuidgenerator.net/version4)
@@ -367,7 +367,7 @@
   #define DELTA_DIAGONAL_ROD 217.3 // mm
 
   // Horizontal offset from middle of printer to smooth rod center.
-  #define DELTA_SMOOTH_ROD_OFFSET 151.0 // mm
+  #define DELTA_SMOOTH_ROD_OFFSET 127.0 // mm
 
   // Horizontal offset of the universal joints on the end effector.
   #define DELTA_EFFECTOR_OFFSET 24.0 // mm
@@ -379,7 +379,7 @@
   #define DELTA_RADIUS (DELTA_SMOOTH_ROD_OFFSET-(DELTA_EFFECTOR_OFFSET)-(DELTA_CARRIAGE_OFFSET))
 
   // Print surface diameter/2 minus unreachable space (avoid collisions with vertical towers).
-  #define DELTA_PRINTABLE_RADIUS 100.0
+  #define DELTA_PRINTABLE_RADIUS 10.0
 
   // Delta calibration menu
   // uncomment to add three points calibration menu option.
@@ -412,15 +412,15 @@
 // coarse Endstop Settings
 #define ENDSTOPPULLUPS // Comment this out (using // at the start of the line) to disable the endstop pullup resistors
 
-#if DISABLED(ENDSTOPPULLUPS)
+#if ENABLED(ENDSTOPPULLUPS)
   // fine endstop settings: Individual pullups. will be ignored if ENDSTOPPULLUPS is defined
-  //#define ENDSTOPPULLUP_XMAX
-  //#define ENDSTOPPULLUP_YMAX
-  //#define ENDSTOPPULLUP_ZMAX
-  //#define ENDSTOPPULLUP_XMIN
-  //#define ENDSTOPPULLUP_YMIN
-  //#define ENDSTOPPULLUP_ZMIN
-  //#define ENDSTOPPULLUP_ZMIN_PROBE
+  #define ENDSTOPPULLUP_XMAX
+  #define ENDSTOPPULLUP_YMAX
+  #define ENDSTOPPULLUP_ZMAX
+  #define ENDSTOPPULLUP_XMIN
+  #define ENDSTOPPULLUP_YMIN
+  #define ENDSTOPPULLUP_ZMIN
+  #define ENDSTOPPULLUP_ZMIN_PROBE
 #endif
 
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
@@ -430,7 +430,7 @@ const bool Z_MIN_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 const bool X_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic of the endstop.
 const bool Y_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic of the endstop.
 const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic of the endstop.
-const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the logic of the endstop.
+const bool Z_MIN_PROBE_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
 
 //===========================================================================
 //============================= Z Probe Options =============================
@@ -466,11 +466,11 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
 // Setting the wrong pin may have unexpected and potentially disastrous consequences.
 // Use with caution and do your homework.
 //
-//#define Z_MIN_PROBE_ENDSTOP
+#define Z_MIN_PROBE_ENDSTOP
 
 // Enable Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN to use the Z_MIN_PIN for your Z_MIN_PROBE.
 // The Z_MIN_PIN will then be used for both Z-homing and probing.
-#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // To use a probe you must enable one of the two options above!
 
@@ -503,9 +503,9 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR false // DELTA does not invert
-#define INVERT_Y_DIR false
-#define INVERT_Z_DIR false
+#define INVERT_X_DIR true // DELTA does not invert
+#define INVERT_Y_DIR true
+#define INVERT_Z_DIR true
 
 // @section extruder
 
@@ -581,7 +581,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
 
 // @section bedlevel
 
-//#define AUTO_BED_LEVELING_FEATURE // Delete the comment to enable (remove // at the start of the line)
+#define AUTO_BED_LEVELING_FEATURE // Delete the comment to enable (remove // at the start of the line)
 //#define DEBUG_LEVELING_FEATURE
 //#define Z_MIN_PROBE_REPEATABILITY_TEST  // If not commented out, Z Probe Repeatability test will be included if Auto Bed Leveling is Enabled.
 
@@ -605,7 +605,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
   #if ENABLED(AUTO_BED_LEVELING_GRID)
 
     // Set the rectangle in which to probe
-    #define DELTA_PROBEABLE_RADIUS (DELTA_PRINTABLE_RADIUS - 10)
+    #define DELTA_PROBEABLE_RADIUS (DELTA_PRINTABLE_RADIUS - 5)
     #define LEFT_PROBE_BED_POSITION -(DELTA_PROBEABLE_RADIUS)
     #define RIGHT_PROBE_BED_POSITION DELTA_PROBEABLE_RADIUS
     #define FRONT_PROBE_BED_POSITION -(DELTA_PROBEABLE_RADIUS)
@@ -651,7 +651,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
   //  (0,0)
   #define X_PROBE_OFFSET_FROM_EXTRUDER 0     // X offset: -left  +right  [of the nozzle]
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 0   // Y offset: -front +behind [the nozzle]
-  #define Z_PROBE_OFFSET_FROM_EXTRUDER 0.5  // Z offset: -below +above  [the nozzle]
+  #define Z_PROBE_OFFSET_FROM_EXTRUDER 0  // Z offset: -below +above  [the nozzle]
 
   #define XY_TRAVEL_SPEED 2000         // X and Y axis travel speed between probes, in mm/min.
 
@@ -680,11 +680,11 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
 
   // A Mechanical Probe is any probe that either doesn't deploy or needs manual deployment
   // For example any setup that uses the nozzle itself as a probe.
-  //#define MECHANICAL_PROBE
+  #define MECHANICAL_PROBE
 
   // Allen key retractable z-probe as seen on many Kossel delta printers - http://reprap.org/wiki/Kossel#Automatic_bed_leveling_probe
   // Deploys by touching z-axis belt. Retracts by pushing the probe down. Uses Z_MIN_PIN.
-  #define Z_PROBE_ALLEN_KEY
+  //#define Z_PROBE_ALLEN_KEY
 
   #if ENABLED(Z_PROBE_ALLEN_KEY)
     // 2 or 3 sets of coordinates for deploying and retracting the spring loaded touch probe on G29,
@@ -784,7 +784,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
 #if ENABLED(MANUAL_HOME_POSITIONS)
   #define MANUAL_X_HOME_POS 0
   #define MANUAL_Y_HOME_POS 0
-  #define MANUAL_Z_HOME_POS 200 // For delta: Distance between nozzle and print surface after homing.
+  #define MANUAL_Z_HOME_POS 330 // For delta: Distance between nozzle and print surface after homing.
 #endif
 
 // Use "Z Safe Homing" to avoid homing with a Z probe outside the bed area.
@@ -825,8 +825,8 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
 #define XYZ_STEPS (XYZ_FULL_STEPS_PER_ROTATION * XYZ_MICROSTEPS / double(XYZ_BELT_PITCH) / double(XYZ_PULLEY_TEETH))
 
 #define DEFAULT_AXIS_STEPS_PER_UNIT   {XYZ_STEPS, XYZ_STEPS, XYZ_STEPS, 150}  // default steps per unit for Kossel (GT2, 20 tooth)
-#define DEFAULT_MAX_FEEDRATE          {200, 200, 200, 200}    // (mm/sec)
-#define DEFAULT_MAX_ACCELERATION      {3000,3000,3000,3000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
+#define DEFAULT_MAX_FEEDRATE          {300, 300, 300, 300}    // (mm/sec)
+#define DEFAULT_MAX_ACCELERATION      {6000,6000,6000,6000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E acceleration in mm/s^2 for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration in mm/s^2 for retracts
@@ -912,7 +912,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
 //    en, pl, fr, de, es, ru, bg, it, pt, pt_utf8, pt-br, pt-br_utf8,
 //    fi, an, nl, ca, eu, kana, kana_utf8, cn, cz, test
 //
-#define LANGUAGE_INCLUDE GENERATE_LANGUAGE_INCLUDE(en)
+#define LANGUAGE_INCLUDE GENERATE_LANGUAGE_INCLUDE(cn)
 
 //
 // LCD CHARACTER SET
