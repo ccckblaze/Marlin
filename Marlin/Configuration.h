@@ -379,7 +379,7 @@
   #define DELTA_RADIUS (DELTA_SMOOTH_ROD_OFFSET-(DELTA_EFFECTOR_OFFSET)-(DELTA_CARRIAGE_OFFSET))
 
   // Print surface diameter/2 minus unreachable space (avoid collisions with vertical towers).
-  #define DELTA_PRINTABLE_RADIUS 10.0
+  #define DELTA_PRINTABLE_RADIUS 100.0
 
   // Delta calibration menu
   // uncomment to add three points calibration menu option.
@@ -605,7 +605,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = true; // set to true to invert the lo
   #if ENABLED(AUTO_BED_LEVELING_GRID)
 
     // Set the rectangle in which to probe
-    #define DELTA_PROBEABLE_RADIUS (DELTA_PRINTABLE_RADIUS - 5)
+    #define DELTA_PROBEABLE_RADIUS (DELTA_PRINTABLE_RADIUS - 10)
     #define LEFT_PROBE_BED_POSITION -(DELTA_PROBEABLE_RADIUS)
     #define RIGHT_PROBE_BED_POSITION DELTA_PROBEABLE_RADIUS
     #define FRONT_PROBE_BED_POSITION -(DELTA_PROBEABLE_RADIUS)
@@ -651,7 +651,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = true; // set to true to invert the lo
   //  (0,0)
   #define X_PROBE_OFFSET_FROM_EXTRUDER 0     // X offset: -left  +right  [of the nozzle]
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 0   // Y offset: -front +behind [the nozzle]
-  #define Z_PROBE_OFFSET_FROM_EXTRUDER 0  // Z offset: -below +above  [the nozzle]
+  #define Z_PROBE_OFFSET_FROM_EXTRUDER 0.5  // Z offset: -below +above  [the nozzle]
 
   #define XY_TRAVEL_SPEED 2000         // X and Y axis travel speed between probes, in mm/min.
 
@@ -784,7 +784,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = true; // set to true to invert the lo
 #if ENABLED(MANUAL_HOME_POSITIONS)
   #define MANUAL_X_HOME_POS 0
   #define MANUAL_Y_HOME_POS 0
-  #define MANUAL_Z_HOME_POS 330 // For delta: Distance between nozzle and print surface after homing.
+  #define MANUAL_Z_HOME_POS 320 // For delta: Distance between nozzle and print surface after homing.
 #endif
 
 // Use "Z Safe Homing" to avoid homing with a Z probe outside the bed area.
@@ -864,7 +864,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = true; // set to true to invert the lo
 // M501 - reads parameters from EEPROM (if you need reset them after you changed them temporarily).
 // M502 - reverts to the default "factory settings".  You still need to store them in EEPROM afterwards if you want to.
 //define this to enable EEPROM support
-//#define EEPROM_SETTINGS
+#define EEPROM_SETTINGS
 
 #if ENABLED(EEPROM_SETTINGS)
   // To disable EEPROM Serial responses and decrease program space by ~1700 byte: comment this out:
